@@ -6,10 +6,9 @@ const Register = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const handleRegister = (e) => {
-    e.preventDefault();
+  const handleRegister = () => {
     axios
-      .post("http://localhost:5173/signup", {
+      .post("http://localhost:3001/signup", {
         username: username,
         password: password,
       })
@@ -17,6 +16,8 @@ const Register = () => {
         alert(res.data);
         navigate("/login");
       });
+    setUsername("");
+    setPassword("");
   };
 
   return (
@@ -60,7 +61,7 @@ const Register = () => {
             <button
               type="submit"
               className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-              onClick={(e) => handleRegister(e)}
+              onClick={handleRegister}
             >
               Register
             </button>

@@ -7,6 +7,7 @@ const AuthContextProvider = ({ children }) => {
       case "LOGIN":
         return { user: action.payload };
       case "LOGOUT":
+        localStorage.removeItem("token");
         return { user: null };
       default:
         return state;
